@@ -22,6 +22,10 @@ const config: StorybookConfig = {
         prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
     },
   },
+  async viteFinal(config) {
+    config.base = process.env.STORYBOOK_BASE_PATH ?? config.base ?? './';
+    return config;
+  },
 };
 
 export default config;
